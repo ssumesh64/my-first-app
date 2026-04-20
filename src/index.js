@@ -1,15 +1,263 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
-
 export default {
-	async fetch(request, env, ctx) {
-		return new Response("Hello World!");
-	},
+  async fetch() {
+    return new Response(`
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumesh Portfolio</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+/* NAV */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  backdrop-filter: blur(20px);
+  background: rgba(0,0,0,0.4);
+  z-index: 100;
+}
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #aaa;
+  transition: 0.3s;
+}
+
+nav a.active { color: white; }
+nav a:hover { color: #fff; }
+
+/* SECTION */
+.section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  padding: 80px;
+}
+
+.dark { background: #000; color: #fff; }
+.light { background: #fff; color: #000; }
+
+.container { max-width: 1100px; }
+
+/* HERO */
+.hero h1 { font-size: 64px; letter-spacing: -1px; }
+.hero p { font-size: 18px; color: #888; }
+
+.profile {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #444;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+/* SKILLS */
+.skill { margin-bottom: 15px; }
+.bar { height: 5px; background: #ddd; }
+.fill { height: 5px; background: #000; }
+
+/* CARD */
+.card {
+  border-bottom: 1px solid #333;
+  padding: 20px 0;
+  transition: 0.3s;
+}
+.card:hover { transform: translateX(10px); }
+
+/* TIMELINE */
+.timeline { border-left: 2px solid #aaa; padding-left: 25px; }
+
+/* LIST */
+ul { padding-left: 20px; }
+li { margin-bottom: 10px; }
+
+/* FADE */
+.fade {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div>Portfolio</div>
+  <nav>
+    <a href="#p1">Home</a>
+    <a href="#p2">About</a>
+    <a href="#p3">Projects</a>
+    <a href="#p4">Experience</a>
+    <a href="#p5">Achievements</a>
+    <a href="#p6">Skills</a>
+    <a href="#p7">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="p1" class="section dark">
+<div class="container fade hero">
+<div class="profile">SS</div>
+<h1>Sambareddy Sumesh</h1>
+<p>Software Engineer & B.Tech Graduate</p>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="p2" class="section light">
+<div class="container fade">
+<h2>About</h2>
+<p>
+Computer Science graduate with hands-on experience in automation testing, API validation,
+and data analytics. Worked on Playwright automation, Power BI dashboards, and REST APIs.
+Focused on building scalable and efficient solutions.
+</p>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="p3" class="section dark">
+<div class="container fade">
+<h2>Projects</h2>
+
+<div class="card">
+<h3>Power BI Report Automation Framework</h3>
+<p>
+Developed an end-to-end automation framework using Playwright to validate Power BI dashboards.
+Implemented service principal authentication and automated multi-page validation.
+Built DOM-based extraction for charts and integrated Allure reporting.
+Reduced manual effort by ~70%.
+</p>
+</div>
+
+<div class="card">
+<h3>API Automation Testing Framework</h3>
+<p>
+Developed API automation for authentication and CRUD operations.
+Tested APIs using OAuth2, JWT, Azure AD, and AWS Cognito.
+Validated response schemas and integrated Allure reporting.
+</p>
+</div>
+
+<div class="card">
+<h3>Walmart Sales Data Analysis</h3>
+<p>
+Used SQL and Python for data cleaning, transformation, and insights generation.
+Identified trends and customer behavior patterns.
+</p>
+</div>
+
+<div class="card">
+<h3>HR Analytics Dashboard</h3>
+<p>
+Built Power BI dashboard analyzing employee attrition and workforce trends.
+Used DAX for KPIs and dynamic filtering.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="p4" class="section light">
+<div class="container fade">
+<h2>Experience</h2>
+
+<div class="timeline">
+<h3>Digital Automation Intern – Sonata Software</h3>
+<p>Mar 2025 – Oct 2025</p>
+<p>
+Developed UI & API automation frameworks using Playwright.
+Automated Power BI validation and API testing across 14+ endpoints.
+Integrated Allure reporting and improved testing efficiency.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="p5" class="section dark">
+<div class="container fade">
+<h2>Key Achievements</h2>
+<ul>
+<li>Reduced manual validation effort by 70%+</li>
+<li>Tested 14+ APIs across multiple authentication systems</li>
+<li>Built scalable automation frameworks</li>
+<li>Improved debugging using Allure reports</li>
+</ul>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="p6" class="section light">
+<div class="container fade">
+<h2>Core Competencies</h2>
+<ul>
+<li>Automation Testing (UI + API)</li>
+<li>Power BI Dashboard Validation</li>
+<li>REST API Testing</li>
+<li>Data Analysis & Visualization</li>
+<li>Test Framework Design</li>
+<li>Debugging & RCA</li>
+</ul>
+
+<h3>Tools</h3>
+<p>
+Playwright, Selenium, Postman, Power BI, Azure, AWS Cognito,
+Allure Reports, Git, VS Code
+</p>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="p7" class="section dark">
+<div class="container fade">
+<h2>Contact</h2>
+<p>Email: sambareddysumesh9@gmail.com</p>
+<p>Phone: 8374938195</p>
+<p>LinkedIn: linkedin.com/in/sumesh-sambareddy</p>
+</div>
+</section>
+
+<script>
+const els = document.querySelectorAll('.fade');
+const obs = new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('show');
+}
+});
+});
+els.forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
+    `, {
+      headers: { "content-type": "text/html" },
+    });
+  },
 };
